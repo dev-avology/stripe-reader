@@ -1,0 +1,44 @@
+{
+    "build": {
+      "development": {
+        "developmentClient": true,
+        "distribution": "internal",
+        "android": {
+          "gradleCommand": ":app:assembleDebug"
+        },
+        "ios": {
+          "buildConfiguration": "Debug"
+        },
+        "channel": "development"
+      },
+      "preview": {
+        "distribution": "internal",
+        "channel": "preview",
+        "android": {
+          "buildType": "apk"
+        },
+        "ios": {
+          "buildConfiguration": "Debug"
+        }
+      },
+      "simulator": {
+        "ios": {
+          "simulator": true,
+          "image": "latest"
+        }
+      },
+      "production": {
+        "channel": "production",
+        "android": {
+          "gradleCommand": ":app:assembleRelease"
+        }
+      }
+    },
+    "submit": {
+      "production": {
+        "ios": {
+          "companyName": "Booostr Technologies, Inc."
+        }
+      }
+    }
+  }
