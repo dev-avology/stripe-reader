@@ -13,7 +13,7 @@ const HomeScreen = () => {
 
   const { discoverReaders, connectBluetoothReader, discoveredReaders } =
     useStripeTerminal({
-      didUpdateDiscoveredReaders: (readers) => {
+      onUpdateDiscoveredReaders: (readers) => {
         // After the SDK discovers a reader, your app can connect to it.
         // Here, we're automatically connecting to the first discovered reader.
         console.log(readers);
