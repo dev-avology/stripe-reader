@@ -40,7 +40,8 @@ const HomeScreen = () => {
   const handleConnectBluetoothReader = async (id) => {
     console.log(id);
     const { reader, error } = await connectBluetoothReader({
-      readerId: discoveredReaders[0].id,
+      // readerId: discoveredReaders[0].id,
+      reader: discoveredReaders[0],
       // Since the simulated reader is not associated with a real location, we recommend
       // specifying its existing mock location.
       locationId: discoveredReaders[0].locationId,
