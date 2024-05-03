@@ -11,7 +11,7 @@ const HomeScreen = () => {
     });
   }, [initialize]);
 
-  const { discoverReaders, connectBluetoothReader, discoveredReaders } =
+  const { discoverReaders, connectBluetoothReader, discoveredReaders, disconnectReader } =
     useStripeTerminal({
       onUpdateDiscoveredReaders: (readers) => {
         // After the SDK discovers a reader, your app can connect to it.
@@ -50,7 +50,7 @@ const HomeScreen = () => {
     
     if (error) {
       console.log('connectBluetoothReader error', error);
-      alert('Unbale to connect to reader.');
+      alert('Unable to connect to reader.');
       return;
     }else{
       alert('Reader connected successfully.');
@@ -63,10 +63,27 @@ const HomeScreen = () => {
     handleDiscoverReaders();
   }
 
+  const disconnectFromReader = async () => {
+    const { reader, error } = await disconnectReader();
+
+    if (error) {
+      console.log('connectBluetoothReader error', error);
+      alert('Unbale to disconnect from the reader.');
+      return;
+    }else{
+      console.log(reader);
+      alert('Reader disconnected successfully.');
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Button title="Connect Reader" onPress={connectReader}>
         <Text>Connect Reader</Text>
+      </Button>
+
+      <Button title="Disconnect Reader" onPress={disconnectFromReader}>
+        <Text>Disconnect Reader</Text>
       </Button>
       <StatusBar style="auto" />
     </View>
